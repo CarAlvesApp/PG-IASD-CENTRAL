@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progresso...</title>
+
+    <link rel="shortcut icon" href="../src/LogoPG.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/60de48ee9a.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-storage-compat.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <style>
+        body {
+   
+    height: 100vh;
+    margin: 0;
+   background-color: rgb(32, 43, 77);
+    
+
+    
+}
+
+.timer-container {
+    width: 30%;
+    margin: 0 auto;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    border: 10px solid #4402fc;
+    border-top: 10px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-33%, -20%);
+    font-size: 28px;
+    color:#fffdfe;
+    
+    
+}
+#div_img {
+
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    text-align: center;
+    
+}
+#img {
+    width: 150px;
+    height: 150px;
+
+}
+
+    </style>
+</head>
+<body>
+    <div id="div_img">
+     <img id="img" src="../src/LogoPG.png" alt="">
+    </div><br><br>
+
+    <div class="timer-container">
+        <div id="circulo" class="circle"></div>
+        <div id="time" class="time" id="time">10</div>
+    </div>
+  
+
+    <script>
+        let timeLeft = 10;
+const timeElement = document.getElementById('time');
+
+
+const countdown = setInterval(() => {
+
+    
+    if (timeLeft == 90) {
+        clearInterval(countdown);
+        timeElement.textContent = '100%';
+        var circulo= document.getElementById('circulo')
+        circulo.style.borderColor='rgb(69, 150, 2)';
+
+        var time= document.getElementById('time')
+        time.style.color='rgb(69, 150, 2)';
+       
+        setTimeout(function(){
+          
+            window.open('Tela01.html.html')
+            window.close('Tela01.html.html')
+             document.querySelector('.timer-container').style.display='none'
+        },1000)
+    
+      
+    } else {
+        if(timeLeft == 70) {
+           var circulo= document.getElementById('circulo')
+           circulo.style.borderColor = 'rgb(232, 255, 127)';
+           var time= document.getElementById('time')
+           time.style.color='rgb(69, 150, 2)';
+        }
+        timeElement.textContent = `${timeLeft}%`;
+        timeLeft++;
+    }
+}, 46);
+    </script>
+    
+</body>
+</html>
